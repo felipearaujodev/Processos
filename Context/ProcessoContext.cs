@@ -8,12 +8,7 @@ namespace Processos.Context
         public ProcessoContext(DbContextOptions<ProcessoContext> options) : base(options)
         { }
         public DbSet<Processo> Processos { get; set; }
+        public DbSet<ProcessoHistorico> ProcessoHistorico { get; set; }
         
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-        }
     }
 }

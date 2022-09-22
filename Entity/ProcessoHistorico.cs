@@ -2,10 +2,12 @@
 
 namespace Processos.Entity
 {
-    public class Processo
+    public class ProcessoHistorico
     {
+        
         [Key]
         public int Id { get; set; }
+        public int ProcessoId { get; set; }
         public string? Numero { get; set; }
         public DateTime Data { get; set; }
         public string? Tipo { get; set; }

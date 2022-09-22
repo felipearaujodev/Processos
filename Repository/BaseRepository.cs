@@ -13,7 +13,8 @@ namespace Processos.Repository
         }
         public void Add<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete<T>(T entity) where T : class
