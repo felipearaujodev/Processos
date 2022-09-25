@@ -18,6 +18,10 @@ namespace Processos.Models.Request
         public IEnumerable<ProcessoParte>? Partes { get; set; }
         
         public string? Observacoes { get; set; }
+
+        [Required(ErrorMessage = "Nome do documento é obrigatório")]
+        public string? DocumentoNome { get; set; }
+
         [Required(ErrorMessage = "Documento é obrigatório")]
         public string? Documento { get; set; }
     }

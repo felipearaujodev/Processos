@@ -30,7 +30,7 @@ namespace Processos.Controllers
 
                 return processos.Any()
                     ? Ok(processos)
-                    : BadRequest("nenhum processo encontrado!");
+                    : NotFound("nenhum processo encontrado!");
             }
             catch(Exception ex)
             {
@@ -44,8 +44,10 @@ namespace Processos.Controllers
         public IActionResult Get(int id)
         {
             try {
-                var processo = _repositoryProcesso.GetById(id);
-                return Ok(processo);
+                Processo processo = _repositoryProcesso.GetById(id);
+                return processo != null 
+                    ? Ok(processo) 
+                    : NotFound("Processo não encontrado") ;
             }
             catch(Exception ex)
             {
@@ -65,7 +67,7 @@ namespace Processos.Controllers
 
             Processo processo = new Processo
             {
-                Numero = request.Numero,
+                Numero = request.Numero.PadLeft(5, '0'),
                 Data = request.Data,
                 Tipo = request.Tipo,
                 Partes = request.Partes,

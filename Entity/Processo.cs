@@ -11,6 +11,7 @@ namespace Processos.Entity
         public string? Tipo { get; set; }
         public IEnumerable<ProcessoParte>? Partes { get; set; }
         public string? Observacoes { get; set; }
+        public string? DocumentoNome { get; set; }
         public string? Documento { get; set; }
     }
 }
