@@ -10,9 +10,12 @@ namespace Processos.Entity
     public class ProcessoHistoricoController : ControllerBase
     {
         public IHistoricoRepository _repositoryHistorico;
-        public ProcessoHistoricoController(IHistoricoRepository repositoryHistorico)
+        public IProcessoRepository _repositoryProcesso;
+        public ProcessoHistoricoController(IHistoricoRepository repositoryHistorico, 
+            IProcessoRepository repositoryProcesso)
         {
             _repositoryHistorico = repositoryHistorico;
+            _repositoryProcesso = repositoryProcesso;
         }
 
         // GET: api/<ProcessoHistoricoController>
@@ -34,12 +37,12 @@ namespace Processos.Entity
         }
 
         // GET api/<ProcessoHistoricoController>/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{processoId}")]
+        public IActionResult Get(int processoId)
         {
             try
             {
-                var historico = _repositoryHistorico.GetById(id);
+                var historico = _repositoryHistorico.ProcessoId(processoId);
                 return Ok(historico);
             }
             catch (Exception ex)
@@ -51,6 +54,31 @@ namespace Processos.Entity
 
         [HttpPost("{id}/Restaurar")]
         public IActionResult Restaurar(int id) {
+
+            ProcessoHistorico historico = _repositoryHistorico.GetById(id);
+
+            if (historico == null) return BadRequest("Histórico não encontrado");
+
+            if (historico.Restaurado) return Unauthorized("Histórico já foi restaurado!");
+
+            Processo processo = _repositoryProcesso.GetById(historico.ProcessoId);
+
+            if (processo == null) return BadRequest("Processo não existe!");
+
+            processo.Numero = historico.Numero;
+            processo.Data = historico.Data;
+            processo.Observacoes = historico.Observacoes;
+            processo.Tipo = historico.Tipo;
+            processo.Documento = historico.Documento;
+            processo.DocumentoNome = historico.DocumentoNome;
+
+            _repositoryProcesso.Update(processo);
+
+            historico.Restaurado = true;
+            _repositoryHistorico.Update(historico);
+
+
+
 
             return Ok();
         }

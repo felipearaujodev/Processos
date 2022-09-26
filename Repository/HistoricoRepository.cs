@@ -15,10 +15,19 @@ namespace Processos.Repository
         }
 
         public IEnumerable<ProcessoHistorico> Get() => _context.ProcessoHistorico.Include(p => p.Partes).ToList();
+        
 
         public ProcessoHistorico GetById(int id)
         {
             return _context.ProcessoHistorico.Include(p => p.Partes).Where(p => p.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<ProcessoHistorico> ProcessoId(int processoId)
+        {
+            return _context.ProcessoHistorico
+            .Include(p => p.Partes)
+            .Where(p => p.ProcessoId == processoId)
+            .ToList();
         }
     }
 }

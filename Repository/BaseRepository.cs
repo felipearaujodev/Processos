@@ -1,4 +1,5 @@
-﻿using Processos.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Processos.Context;
 using Processos.Repository.Interfaces;
 
 namespace Processos.Repository
@@ -19,17 +20,18 @@ namespace Processos.Repository
 
         public void Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
-        }
+            var ent = _context.Set<T>().Find(entity);
 
-        public Task<bool> SaveChangesAsync()
-        {
-            throw new NotImplementedException();
+            if (ent != null)
+            {
+                _context.Set<T>().Remove(entity);
+            }
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
