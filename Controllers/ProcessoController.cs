@@ -69,7 +69,7 @@ namespace Processos.Controllers
 
                 Processo processo = new Processo
                 {
-                    Numero = request.Numero.PadLeft(5, '0'),
+                    //Numero = request.Numero.PadLeft(5, '0'),
                     Data = request.Data,
                     Tipo = request.Tipo,
                     Partes = request.Partes,
@@ -124,10 +124,9 @@ namespace Processos.Controllers
                 if (processo.Id != id)
                     return NotFound("o ID informado não existe!");
 
-                processo.Numero = request.Numero.PadLeft(5, '0') ?? processo.Numero;
+                //processo.Numero = request.Numero.PadLeft(5, '0') ?? processo.Numero;
                 processo.Data = processo.Data != request.Data ? request.Data : processo.Data;
                 processo.Tipo = request.Tipo ?? processo.Tipo;
-                processo.Partes = request.Partes ?? processo.Partes;
                 processo.Observacoes = request.Observacoes ?? processo.Observacoes;
                 processo.DocumentoNome = request.DocumentoNome ?? processo.DocumentoNome;
                 processo.Documento = request.Documento ?? processo.Documento;
