@@ -30,6 +30,7 @@ builder.Services.AddDbContext<ProcessoContext>(opt=>opt.UseInMemoryDatabase("pro
 builder.Services.AddScoped<IBaseRepository, BaseRepository>();
 builder.Services.AddScoped<IProcessoRepository, ProcessoRepository>();
 builder.Services.AddScoped<IHistoricoRepository, HistoricoRepository>();
+builder.Services.AddScoped<IProcessoPartesRepository, ProcessoPartesRepository>();
 
 var app = builder.Build();
 

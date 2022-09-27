@@ -121,6 +121,9 @@ namespace Processos.Controllers
                 if (processo == null)
                     return NotFound("Não foi possível encontrar o processo selecionado!");
 
+                if (processo.Id != id)
+                    return NotFound("o ID informado não existe!");
+
                 processo.Numero = request.Numero.PadLeft(5, '0') ?? processo.Numero;
                 processo.Data = processo.Data != request.Data ? request.Data : processo.Data;
                 processo.Tipo = request.Tipo ?? processo.Tipo;

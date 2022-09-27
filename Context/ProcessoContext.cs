@@ -9,6 +9,7 @@ namespace Processos.Context
         { }
         public DbSet<Processo> Processos { get; set; }
         public DbSet<ProcessoHistorico> ProcessoHistorico { get; set; }
+        public DbSet<ProcessoParte> ProcessoParte { get; set; }
         
     }
 }
