@@ -165,7 +165,7 @@ namespace Processos.Controllers
                 };
                 _repositoryHistorico.Add(historico);
 
-                return NoContent();
+                return Ok(processoParte);
             }
             catch(Exception ex)
             {
@@ -188,7 +188,7 @@ namespace Processos.Controllers
                 if (processoParte.Id != id)
                     return NotFound();
 
-                _repositoryPartes.Delete(processoParte);
+                _repositoryPartes.Delete(id);
 
                 return NoContent();
             }

@@ -1,9 +1,9 @@
 ﻿namespace Processos.Repository.Interfaces
 {
-    public interface IBaseRepository
+    public interface IBaseRepository<TEntity, TKey> where TEntity : class
     {
-        public void Add<T>(T entity) where T : class;
-        public void Update<T>(T entity) where T : class;
-        public void Delete<T>(T entity) where T : class;
+        public void Add(TEntity entity);
+        public void Update(TEntity entity);
+        public void Delete(TKey id);
     }
 }

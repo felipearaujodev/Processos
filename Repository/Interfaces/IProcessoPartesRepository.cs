@@ -2,7 +2,7 @@
 
 namespace Processos.Repository.Interfaces
 {
-    public interface IProcessoPartesRepository : IBaseRepository
+    public interface IProcessoPartesRepository : IBaseRepository<ProcessoParte, int>
     {
         IEnumerable<ProcessoParte> Get();
         IEnumerable<ProcessoParte> GetProcessoId(int processoId);

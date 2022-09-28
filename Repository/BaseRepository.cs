@@ -4,7 +4,7 @@ using Processos.Repository.Interfaces;
 
 namespace Processos.Repository
 {
-    public class BaseRepository : IBaseRepository
+    public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity : class
     {
         private readonly ProcessoContext _context;
 
@@ -12,26 +12,27 @@ namespace Processos.Repository
         {
             _context = context;
         }
-        public void Add<T>(T entity) where T : class
+        public void Add(TEntity entity)
         {
-            _context.Set<T>().Add(entity);
+            _context.Set<TEntity>().Add(entity);
             _context.SaveChanges();
         }
 
-        public void Delete<T>(T entity) where T : class
+        public void Delete(TKey id)
         {
-            var ent = _context.Set<T>().Find(entity);
-
-            if (ent != null)
-            {
-                _context.Set<T>().Remove(entity);
-            }
+            _context.Set<TEntity>().Remove(Select(id));
+            _context.SaveChanges();
         }
 
-        public void Update<T>(T entity) where T : class
+        public void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
+        }
+
+        public TEntity Select(TKey id)
+        {
+            return _context.Set<TEntity>().Find(id);
         }
     }
 }

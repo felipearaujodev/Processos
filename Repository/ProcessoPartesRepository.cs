@@ -5,7 +5,7 @@ using Processos.Repository.Interfaces;
 
 namespace Processos.Repository
 {
-    public class ProcessoPartesRepository : BaseRepository, IProcessoPartesRepository
+    public class ProcessoPartesRepository : BaseRepository<ProcessoParte, int>, IProcessoPartesRepository
     {
         private readonly ProcessoContext _context;
 

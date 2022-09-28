@@ -27,7 +27,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ProcessoContext>(opt=>opt.UseInMemoryDatabase("processos"));
-builder.Services.AddScoped<IBaseRepository, BaseRepository>();
+//builder.Services.AddScoped<IBaseRepository, BaseRepository>();
 builder.Services.AddScoped<IProcessoRepository, ProcessoRepository>();
 builder.Services.AddScoped<IHistoricoRepository, HistoricoRepository>();
 builder.Services.AddScoped<IProcessoPartesRepository, ProcessoPartesRepository>();
