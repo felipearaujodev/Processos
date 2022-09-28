@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\medic\\OneDrive\\Documentos\\GitHub\\Processos\\Processos.csproj": {}
+    "C:\\Users\\Home\\Documents\\GitHub\\Processos\\Processos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\medic\\OneDrive\\Documentos\\GitHub\\Processos\\Processos.csproj": {
+    "C:\\Users\\Home\\Documents\\GitHub\\Processos\\Processos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\medic\\OneDrive\\Documentos\\GitHub\\Processos\\Processos.csproj",
+        "projectUniqueName": "C:\\Users\\Home\\Documents\\GitHub\\Processos\\Processos.csproj",
         "projectName": "Processos",
-        "projectPath": "C:\\Users\\medic\\OneDrive\\Documentos\\GitHub\\Processos\\Processos.csproj",
-        "packagesPath": "C:\\Users\\medic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\medic\\OneDrive\\Documentos\\GitHub\\Processos\\obj\\",
+        "projectPath": "C:\\Users\\Home\\Documents\\GitHub\\Processos\\Processos.csproj",
+        "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Home\\Documents\\GitHub\\Processos\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\medic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Home\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

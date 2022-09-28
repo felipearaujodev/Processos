@@ -19,12 +19,15 @@ namespace Processos.Controllers
         public IProcessoPartesRepository _repositoryPartes;
 
         public IProcessoRepository _repositoryProcesso;
+        public IHistoricoRepository _repositoryHistorico;
 
         public ProcessoPartesController(IProcessoPartesRepository repositoryPartes,
-            IProcessoRepository repositoryProcesso)
+            IProcessoRepository repositoryProcesso,
+            IHistoricoRepository repositoryHistorico)
         {
             _repositoryPartes = repositoryPartes;
             _repositoryProcesso = repositoryProcesso;
+            _repositoryHistorico = repositoryHistorico;
         }
 
         // GET: api/ProcessoPartes
@@ -142,6 +145,25 @@ namespace Processos.Controllers
                     Nome = processoParteRequest.Nome,
                     Sexo = processoParteRequest.Sexo
                 };
+
+                _repositoryPartes.Add(processoParte);
+
+                Processo processo = _repositoryProcesso.GetById(processoParte.ProcessoId);
+
+                ProcessoHistorico historico = new()
+                {
+                    ProcessoId = processo.Id,
+                    Numero = processo.Numero,
+                    Data = processo.Data,
+                    DataLog = DateTime.Now,
+                    Tipo = processo.Tipo,
+                    Partes = processo.Partes,
+                    Observacoes = processo.Observacoes,
+                    DocumentoNome = processo.DocumentoNome,
+                    Documento = processo.Documento
+
+                };
+                _repositoryHistorico.Add(historico);
 
                 return NoContent();
             }

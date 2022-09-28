@@ -12,7 +12,7 @@ namespace Processos.Models.Request
         [Required(ErrorMessage = "Data é obrigatório")]
         public DateTime Data { get; set; }
         [Required(ErrorMessage = "Tipo é obrigatório")]
-        [RegularExpression("judicial|extrajudicial", ErrorMessage = "Tipo deve ser Judicial ou Extra judicial")]
+        [RegularExpression("judicial|extrajudicial", ErrorMessage = "Tipo deve ser judicial ou extrajudicial")]
         public string? Tipo { get; set; }
         public IEnumerable<ProcessoParte>? Partes { get; set; }
         

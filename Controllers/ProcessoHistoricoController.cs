@@ -74,12 +74,6 @@ namespace Processos.Entity
 
             _repositoryProcesso.Update(processo);
 
-            historico.Restaurado = true;
-            _repositoryHistorico.Update(historico);
-
-
-
-
             return Ok();
         }
 
